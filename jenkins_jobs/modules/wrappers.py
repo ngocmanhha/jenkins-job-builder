@@ -2089,7 +2089,7 @@ def xvfb(registry, xml_parent, data):
     mapping = [
         ('installation-name', 'installationName', 'default'),
         ('auto-display-name', 'autoDisplayName', False),
-        ('display-name', 'displayName', ''),
+        ('display-name', 'displayName', None),
         ('assigned-labels', 'assignedLabels', ''),
         ('parallel-build', 'parallelBuild', False),
         ('timeout', 'timeout', 0),
@@ -2099,7 +2099,7 @@ def xvfb(registry, xml_parent, data):
         ('debug', 'debug', False),
         ('shutdown-with-build', 'shutdownWithBuild', False),
     ]
-    helpers.convert_mapping_to_xml(xwrapper, data, mapping, fail_required=True)
+    helpers.convert_mapping_to_xml(xwrapper, data, mapping, fail_required=False)
 
 
 def android_emulator(registry, xml_parent, data):
