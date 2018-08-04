@@ -51,10 +51,11 @@ class JenkinsManager(object):
         password = jjb_config.jenkins['password']
         timeout = jjb_config.jenkins['timeout']
 
+        timeout_arg = {}
         if timeout != _DEFAULT_TIMEOUT:
-            self.jenkins = jenkins.Jenkins(url, user, password, timeout)
-        else:
-            self.jenkins = jenkins.Jenkins(url, user, password)
+            timeout_arg['timeout'] = timeout
+
+        self.jenkins = jenkins.Jenkins(url, user, password, resolve=False, **timeout_arg)
 
         self.cache = JobCache(jjb_config.jenkins['url'],
                               flush=jjb_config.builder['flush_cache'])
